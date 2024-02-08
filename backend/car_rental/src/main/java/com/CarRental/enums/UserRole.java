@@ -1,2 +1,7 @@
-package com.CarRental.enums;public enum UserRole {
+package com.CarRental.enums;
+
+public enum UserRole {
+
+    Admin,
+    Customer
 }
