@@ -15,4 +15,10 @@ export class AuthService {
     return this.httpClient.post(this.BASE_URL + "/api/auth/signup", signupRequest);
   }
 
+  login(loginRequest : any): Observable<any>{
+    return this.httpClient.post(this.BASE_URL + "/api/auth/login", loginRequest);
+  }
+  
 }
+
+
