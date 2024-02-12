@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { StorageService } from '../../services/storage/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
 
-  constructor( private fb: FormBuilder, private authService: AuthService, private router: Router){}
+  constructor( private fb: FormBuilder, private authService: AuthService, private router: Router,
+    private storageService: StorageService ){}
 
 
   ngOnInit(): void {
@@ -24,7 +26,23 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
   onLoginSubmit() {
-    throw new Error('Method not implemented.');
+    this.authService.login(this.loginForm.value).subscribe(data =>{
+      if(data.userId != null){
+        const user = {
+          id: data.userId,
+          role: data.userRole
+        }
+        StorageService.saveUser(user);
+        StorageService.saveToken(data.jwt);
+        if(StorageService.isAdminLoggedIn()){
+          this.router.navigateByUrl("/admin/dashboard");
+        }else if(StorageService.isCustomerLoggedIn()){
+          this.router.navigateByUrl("/customer/dashboard");
+        } else{
+          alert("Bad Credentials");
+        }
+      }
+    })
     }
 
 }

@@ -5,7 +5,9 @@ import com.CarRental.dto.UserDto;
 import com.CarRental.entity.User;
 import com.CarRental.enums.UserRole;
 import com.CarRental.repository.UserRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.service.spi.Stoppable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,20 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AuthService{
 
     private final UserRepository userRepository;
+
+    @PostConstruct
+    public void createAdminAccount(){
+        User adminAccount = userRepository.findByUserRole(UserRole.Admin);
+        if(adminAccount == null){
+            User newAdminAccount = new User();
+            newAdminAccount.setName("Admin");
+            newAdminAccount.setEmail("admin@test.com");
+            newAdminAccount.setPassword(new BCryptPasswordEncoder().encode("admin"));
+            newAdminAccount.setUserRole(UserRole.Admin);
+            userRepository.save(newAdminAccount);
+            System.out.println("Admin account was created successfully");
+        }
+    }
 
     @Override
     public UserDto createCustomer(SignupRequest signupRequest) {
