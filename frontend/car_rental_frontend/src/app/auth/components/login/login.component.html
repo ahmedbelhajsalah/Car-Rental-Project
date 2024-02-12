@@ -1,1 +1,25 @@
-<p>login works!</p>
+<section>
+  
+    <form class="form-class" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+      <h2>Login</h2>
+      <mat-form-field appearance="outline">
+        <input matInput 
+        type="email" 
+        placeholder="your email" 
+        formControlName="email">
+        <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.errors?.['email']">Email is invalid</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput 
+        type="password" 
+        placeholder="your password" 
+        formControlName="password">
+        <mat-error *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</mat-error>
+        <mat-error *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must have at least 7 characters</mat-error>
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="white" >Log in</button>
+      <a routerLink="/register">register now!</a>
+    </form>
+  </section>
+  
