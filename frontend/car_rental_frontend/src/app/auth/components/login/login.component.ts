@@ -12,8 +12,7 @@ import { StorageService } from '../../services/storage/storage.service';
 export class LoginComponent implements OnInit {
 
 
-  constructor( private fb: FormBuilder, private authService: AuthService, private router: Router,
-    private storageService: StorageService ){}
+  constructor( private fb: FormBuilder, private authService: AuthService, private router: Router ){}
 
 
   ngOnInit(): void {
