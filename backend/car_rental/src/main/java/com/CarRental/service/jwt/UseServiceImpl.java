@@ -1,4 +1,4 @@
-package com.CarRental.services.jwt;
+package com.CarRental.service.jwt;
 
 import com.CarRental.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

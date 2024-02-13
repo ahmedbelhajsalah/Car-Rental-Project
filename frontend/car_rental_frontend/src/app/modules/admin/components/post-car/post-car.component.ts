@@ -4,6 +4,8 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { read } from 'fs';
 import { prependListener } from 'process';
 import { reduce } from 'rxjs';
+import { AdminService } from '../../services/admin.service';
+import { Router } from '@angular/router';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -19,7 +21,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class PostCarComponent {
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder, private adminService: AdminService, private router: Router){}
 
 
   carForm!: FormGroup;
@@ -70,6 +72,11 @@ export class PostCarComponent {
     formData.append('year', this.carForm.get('year')?.value);
     formData.append('price', this.carForm.get('price')?.value);
     formData.append('description', this.carForm.get('description')?.value);
+    this.adminService.postCar(formData).subscribe(data =>{
+      alert("Car posted successfully");
+    },error => {
+      alert("Something went wrong");
+    })
   }
   
 }

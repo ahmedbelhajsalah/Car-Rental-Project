@@ -1,6 +1,6 @@
 package com.CarRental.configuration;
 
-import com.CarRental.services.jwt.UserService;
+import com.CarRental.service.jwt.UserService;
 import com.CarRental.utils.JWTUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
