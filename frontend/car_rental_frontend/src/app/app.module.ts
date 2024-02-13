@@ -20,6 +20,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PostCarComponent } from './modules/admin/components/post-car/post-car.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MomentDateModule } from '@angular/material-moment-adapter';
+import {MAT_NATIVE_DATE_FORMATS, NativeDateAdapter, provideNativeDateAdapter} from '@angular/material/core';
+import { MAT_DATE_FORMATS, NativeDateModule } from '@angular/material/core';
+import { DateAdapter } from '@angular/material/core';
+
 
 registerLocaleData(en);
 
@@ -29,7 +37,8 @@ registerLocaleData(en);
     AdminDashboardComponent,
     CustomerDashboardComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    PostCarComponent
   ],
   imports: [
     BrowserModule,
@@ -41,12 +50,18 @@ registerLocaleData(en);
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MomentDateModule,
+    NativeDateModule,
   ],
   providers: [
     provideClientHydration(),
     { provide: NZ_I18N, useValue: en_US },
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    { provide: DateAdapter, useClass: NativeDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_NATIVE_DATE_FORMATS }
   ],
   bootstrap: [AppComponent]
 })

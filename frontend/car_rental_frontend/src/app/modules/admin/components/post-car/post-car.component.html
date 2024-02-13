@@ -1,0 +1,74 @@
+<section>
+  
+    <form class="form-class" [formGroup]="carForm" (ngSubmit)="onPostCar()">
+      <h2>Post a car</h2>
+      <input type="file" class="file-upload" (change)="onFileSelected($event)">
+      <mat-form-field appearance="outline" class="mat-form-field">
+        <mat-label>select a brand name</mat-label>
+        <mat-select [errorStateMatcher]="matcher" formControlName="selectBrand">
+            <mat-option>Clear</mat-option>
+          
+        <mat-option *ngFor="let topping of carList" value="valid">{{topping}}</mat-option>
+      
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" appearance="outline" class="mat-form-field">
+        <input matInput 
+        type="text" 
+        placeholder="Name" 
+        formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mat-form-field">
+        <mat-label>select a type</mat-label>
+        <mat-select [errorStateMatcher]="matcher" formControlName="selectType">
+            <mat-option>Clear</mat-option>
+          
+        <mat-option *ngFor="let TypeList of carTypeList" value="valid">{{TypeList}}</mat-option>
+      
+        </mat-select>
+      </mat-form-field >
+      <mat-form-field appearance="outline" class="mat-form-field">
+        <mat-label>select a transmission</mat-label>
+        <mat-select [errorStateMatcher]="matcher" formControlName="selectTransmission">
+            <mat-option>Clear</mat-option>
+          
+        <mat-option *ngFor="let transmissionList of transmissionList" value="valid">{{transmissionList}}</mat-option>
+      
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mat-form-field">
+        <mat-label>select a color</mat-label>
+        <mat-select [errorStateMatcher]="matcher" formControlName="selectColor">
+            <mat-option>Clear</mat-option>
+          
+        <mat-option *ngFor="let carColorList of carColorList" value="valid">{{carColorList}}</mat-option>
+      
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="mat-form-field">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="mat-form-field">
+        <input matInput 
+        type="text" 
+        placeholder="Price" 
+        formControlName="price">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mat-form-field">
+        <input matInput 
+        type="text" 
+        placeholder="Description" 
+        formControlName="description">
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="white" >Submit</button>
+      <a routerLink="/register">register now!</a>
+    </form>
+  </section>
+  
