@@ -26,4 +26,15 @@ public class AdminController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+
+    @GetMapping("/cars")
+    public ResponseEntity<?> getAllCars(){
+        return ResponseEntity.ok(adminService.getAllCars());
+    }
+
+    @DeleteMapping("/car/{id}")
+    public ResponseEntity<Void> deleteCar(@PathVariable Long id){
+        adminService.deleteCar(id);
+        return ResponseEntity.ok(null);
+    }
 }
