@@ -27,7 +27,7 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
 import {MAT_NATIVE_DATE_FORMATS, NativeDateAdapter, provideNativeDateAdapter} from '@angular/material/core';
 import { MAT_DATE_FORMATS, NativeDateModule } from '@angular/material/core';
 import { DateAdapter } from '@angular/material/core';
-
+import {MatCardModule} from '@angular/material/card';
 
 registerLocaleData(en);
 
@@ -55,6 +55,7 @@ registerLocaleData(en);
     MatDatepickerModule,
     MomentDateModule,
     NativeDateModule,
+    MatCardModule,
   ],
   providers: [
     provideClientHydration(),
