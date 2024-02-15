@@ -37,4 +37,12 @@ export class AdminService {
     return this.http.delete(BASE_URL + "/api/admin/car" + id,  { headers: this.createAuthorizationHeader() });
   }
 
+  getCarById(id: number): Observable<any>{
+    return this.http.get(BASE_URL+ "/api/admin/car/" + id, { headers: this.createAuthorizationHeader() })
+  }
+
+  updateCar(carId: number, carDto: any): Observable<any>{
+    return this.http.put(BASE_URL+ "/api/admin/car/" + carId, carDto, { headers: this.createAuthorizationHeader() } )
+  }
+
 }

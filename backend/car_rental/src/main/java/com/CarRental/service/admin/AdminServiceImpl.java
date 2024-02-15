@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,6 +45,32 @@ public class AdminServiceImpl implements AdminService{
     @Override
     public void deleteCar(Long id) {
         carRepository.deleteById(id);
+    }
+
+    @Override
+    public CarDto getCarById(Long id) {
+        Optional<Car> optionalCar = carRepository.findById(id);
+        return optionalCar.map(Car::getCarDto).orElse(null);
+    }
+
+    @Override
+    public boolean updateCar(Long carId, CarDto carDto) {
+        Optional<Car> optionalCar = carRepository.findById(carId);
+        if(optionalCar.isPresent()){
+            Car car = optionalCar.get();
+            car.setBrand(carDto.getBrand());
+            car.setType(car.getType());
+            car.setName(car.getName());
+            car.setYear(carDto.getYear());
+            car.setPrice(carDto.getPrice());
+            car.setDescription(car.getDescription());
+            car.setColor(carDto.getColor());
+            carRepository.save(car);
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 
