@@ -1,14 +1,14 @@
 <section>
   
-    <form class="form-class" [formGroup]="carForm" (ngSubmit)="onPostCar()">
-      <h2>Post a car</h2>
+    <form class="form-class" [formGroup]="updateCarForm" >
+      <h2>Update a car</h2>
       <input type="file" class="file-upload" (change)="onFileSelected($event)">
       <mat-form-field appearance="outline" class="mat-form-field">
         <mat-label>select a brand name</mat-label>
         <mat-select [errorStateMatcher]="matcher" formControlName="selectBrand">
             <mat-option>Clear</mat-option>
           
-        <mat-option *ngFor="let topping of carList" value="valid">{{topping}}</mat-option>
+        <mat-option *ngFor="let car of carList" [value]="car">{{car}}</mat-option>
       
         </mat-select>
       </mat-form-field>
@@ -24,7 +24,7 @@
         <mat-select [errorStateMatcher]="matcher" formControlName="selectType">
             <mat-option>Clear</mat-option>
           
-        <mat-option *ngFor="let TypeList of carTypeList" value="valid">{{TypeList}}</mat-option>
+        <mat-option *ngFor="let TypeList of carTypeList" [value]="TypeList">{{TypeList}}</mat-option>
       
         </mat-select>
       </mat-form-field >
@@ -32,8 +32,8 @@
         <mat-label>select a transmission</mat-label>
         <mat-select [errorStateMatcher]="matcher" formControlName="selectTransmission">
             <mat-option>Clear</mat-option>
-          
-        <mat-option *ngFor="let transmissionList of transmissionList" value="valid">{{transmissionList}}</mat-option>
+        
+        <mat-option *ngFor="let transmissionList of transmissionList" [value]="transmissionList">{{transmissionList}}</mat-option>
       
         </mat-select>
       </mat-form-field>
@@ -42,14 +42,14 @@
         <mat-select [errorStateMatcher]="matcher" formControlName="selectColor">
             <mat-option>Clear</mat-option>
           
-        <mat-option *ngFor="let carColorList of carColorList" value="valid">{{carColorList}}</mat-option>
-      
+            <mat-option *ngFor="let color of carColorList" [value]="color">{{ color }}</mat-option>
+
         </mat-select>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="mat-form-field">
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="year">
+        <input matInput [matDatepicker]="picker" [formControl]="carUpdate.year">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -67,8 +67,7 @@
         placeholder="Description" 
         formControlName="description">
       </mat-form-field>
-      <button type="submit" mat-raised-button color="white" >Submit</button>
-      <a routerLink="/register">register now!</a>
+      <button type="submit" mat-raised-button color="white" style="margin-bottom: 5%;" (click)="updateCar()">Update</button>
     </form>
   </section>
   

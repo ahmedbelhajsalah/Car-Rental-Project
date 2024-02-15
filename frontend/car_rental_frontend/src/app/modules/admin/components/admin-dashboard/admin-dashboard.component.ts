@@ -35,7 +35,7 @@ export class AdminDashboardComponent implements OnInit {
   image: "https://material.angular.io/assets/img/examples/shiba2.jpg"
   },
   {
-    id: 1,
+    id: 2,
     name: "Audi",
   brand: "Audi",
   color: "Black",
@@ -47,7 +47,7 @@ export class AdminDashboardComponent implements OnInit {
   image: "https://material.angular.io/assets/img/examples/shiba2.jpg"
   },
   {
-    id: 1,
+    id: 3,
     name: "Mercedes",
   brand: "Mercedes",
   color: "Black",
@@ -59,7 +59,7 @@ export class AdminDashboardComponent implements OnInit {
   image: "https://material.angular.io/assets/img/examples/shiba2.jpg"
   },
   {
-    id: 1,
+    id: 4,
     name: "Volkswagen",
   brand: "Volkswagen",
   color: "Black",

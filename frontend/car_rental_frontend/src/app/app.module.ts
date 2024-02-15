@@ -28,6 +28,7 @@ import {MAT_NATIVE_DATE_FORMATS, NativeDateAdapter, provideNativeDateAdapter} fr
 import { MAT_DATE_FORMATS, NativeDateModule } from '@angular/material/core';
 import { DateAdapter } from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
+import { UpdateCarComponent } from './modules/admin/components/update-car/update-car.component';
 
 registerLocaleData(en);
 
@@ -38,7 +39,8 @@ registerLocaleData(en);
     CustomerDashboardComponent,
     LoginComponent,
     SignupComponent,
-    PostCarComponent
+    PostCarComponent,
+    UpdateCarComponent
   ],
   imports: [
     BrowserModule,

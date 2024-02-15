@@ -9,7 +9,12 @@
     <mat-card-content>
         {{ car.description }}
     </mat-card-content>
-    <button mat-button color="primary" style="width: 20%;margin-bottom: 20px;margin-left: 20px;margin-top: 20px;"
-     (click)="deleteCar(car.id)">Delete</button>
+    <div class="button-div">
+        <button mat-button color="primary" style="width: 20%;margin-bottom: 20px;margin-left: 20px;margin-top: 20px;"
+        routerLink="/admin/car/{{car.id}}">Update</button>
+       <button mat-button color="warn" style="width: 20%;margin-bottom: 20px;margin-left: 20px;margin-top: 20px;"
+        (click)="deleteCar(car.id)">Delete</button>
+    </div>
+    
     
   </mat-card>
