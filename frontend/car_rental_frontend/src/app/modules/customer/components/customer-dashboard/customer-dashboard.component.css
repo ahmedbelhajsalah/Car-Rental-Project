@@ -1,0 +1,12 @@
+.card-class{
+    width: 50%;
+    display: flex;
+    margin-left: 25%;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.button-div{
+    display: flex;
+    flex-direction: row;
+}
